@@ -70,9 +70,9 @@ void Devise::display_info(){
 
     printf("\x1B[2J"); //clear console
     printf( "\x1B[0;0H");
+    auto j = table.begin();
     if(strcmp(table.at(3).cbegin(), "LTE")){
         int counter = 0;
-        auto j = table.begin();
         for(auto i = LTE_params.begin(); i != LTE_params.end(); i++){
             if(counter == 10 || counter == 11){ //ul_badwidth and dl_badwidth
                 switch(j->at(0)){
@@ -101,6 +101,12 @@ void Devise::display_info(){
                 printf("%s%idB\n", i->c_str(), dB);
                 continue;
             }
+            printf("%s%s\n", i->c_str(), j->cbegin());
+            j++;
+        }
+    }
+    else{
+        for(auto i = LTE_params.begin(); i != LTE_params.end(); i++){
             printf("%s%s\n", i->c_str(), j->cbegin());
             j++;
         }
